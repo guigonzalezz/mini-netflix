@@ -2,6 +2,11 @@
 
 A minimalist, Netflix-inspired application built with **Next.js** and **TailwindCSS**, created for a front-end code challenge.
 
+## 🔗 Live Demo
+
+You can test the live version of this project here:  
+👉 [https://mini-netflix-dusky.vercel.app](https://mini-netflix-dusky.vercel.app)
+
 ## 📌 Overview
 
 This project demonstrates proficiency in building responsive, accessible, and semantically correct web applications using modern tools and technologies. It includes a basic two-page layout:
