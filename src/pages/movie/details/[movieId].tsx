@@ -13,7 +13,7 @@ import type { Movie } from "../../../types"
 
 export default function MovieDetails() {
     const router = useRouter()
-    const { id } = router.query
+    const { movieId: id } = router.query
     const [movie, setMovie] = useState<Movie | null>(null)
     const [loading, setLoading] = useState(true)
 
@@ -59,7 +59,7 @@ export default function MovieDetails() {
         )
     }
 
-    const backgroundImage = movie.backdrop || movie.poster
+    const backgroundImage = movie.poster
 
     return (
         <Layout>
