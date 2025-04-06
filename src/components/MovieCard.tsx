@@ -3,6 +3,7 @@
 import { ChevronDown, Play, Plus, ThumbsUp } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import { useRouter } from "next/router"
 import { useRef, useState } from "react"
 
 interface Movie {
@@ -20,6 +21,7 @@ interface MovieCardProps {
 export default function MovieCard({ movie, index = 0 }: MovieCardProps) {
     const [isHovered, setIsHovered] = useState(false)
     const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+    const router = useRouter();
 
     const handleMouseEnter = () => {
         hoverTimeoutRef.current = setTimeout(() => {
@@ -37,7 +39,7 @@ export default function MovieCard({ movie, index = 0 }: MovieCardProps) {
 
     return (
         <div
-            className="group relative"
+            className="group relative cursor-pointer"
             style={{
                 transitionDelay: `${index * 50}ms`,
             }}
@@ -64,7 +66,9 @@ export default function MovieCard({ movie, index = 0 }: MovieCardProps) {
                     </div>
 
                     {isHovered && (
-                        <div className="absolute inset-0 flex flex-col">
+                        <div className="absolute inset-0 flex flex-col" onClick={() => {
+                            router.push(`/movie/details/${movie.id}`);
+                        }}>
                             <div className="flex-grow"></div>
                             <div className="bg-[#181818] p-3 space-y-3">
                                 <div className="flex items-center gap-2">
@@ -83,7 +87,6 @@ export default function MovieCard({ movie, index = 0 }: MovieCardProps) {
                                             className="block outline-none focus:ring-2 focus:ring-white"
                                             aria-label={`View details for ${movie.title}`}
                                         >
-
                                             <ChevronDown className="w-5 h-5" />
                                         </Link>
                                     </button>
